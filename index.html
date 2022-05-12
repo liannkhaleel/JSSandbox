@@ -1,1 +1,52 @@
-hello world 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chemistry pH Converter from H^+ concetration</title>
+</head>
+<body>
+
+
+<h2> How to Convert Concentration to pH Tutorial</h2>
+
+
+<p id="demo">(H^+ Concentration)</p>
+
+
+<button type="button" onclick="document.getElementById('demo').innerHTML = 'pH = -log[H^+]'">Click here for the conversion formula</button>
+
+<h2> Concentration to pH Converter</h2>
+<form>
+	<label>Concentrations separated by commas (no spaces)</label><br>
+	<input type="text" id="concs">
+	<input type="submit" value="Submit">
+</form>
+<h3>Converted pH values</h3>
+<div>
+	<p id="pHs"></p>
+</div>
+
+<!-- <script type="text/javascript" src="script.js"></script> -->
+<script type="text/javascript">
+	var test = alert("Hi!");
+
+	document.querySelector("form").addEventListener("submit", (e) => {
+		e.preventDefault();
+		let concentrations = document.querySelector("#concs").value;
+		let concentrationsArray = concentrations.split(",");
+		let phArray = [];
+		for(let i = 0; i < concentrationsArray.length; i++){
+			let pH = convertConcToPH(concentrationsArray[i]);
+			phArray.push(pH);
+		}
+		document.querySelector("#pHs").innerHTML = phArray;
+	})
+
+	function convertConcToPH(conc)
+	{
+		return -Math.log(conc);
+	}
+
+</script>
+</body>
+
+
